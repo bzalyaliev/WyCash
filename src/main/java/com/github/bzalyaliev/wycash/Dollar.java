@@ -1,11 +1,13 @@
 package com.github.bzalyaliev.wycash;
 
 public class Dollar {
-    public int amount = 10;
+    public int amount;
 
     public Dollar(int amount) {
+        this.amount = amount;
     }
 
-    public void times(int multiplier) {
+    Dollar times(int multiplier) {
+        return new Dollar(amount * multiplier);
     }
 }
