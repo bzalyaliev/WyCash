@@ -1,6 +1,6 @@
 package com.github.bzalyaliev.wycash;
 
-abstract class Money {
+class Money {
     protected int amount;
     protected String currency;
 
@@ -17,7 +17,9 @@ abstract class Money {
         return new Franc(amount, "CHF");
     }
 
-    abstract Money times(int amount);
+    Money times(int multiplier) {
+        return new Money(amount * multiplier, currency);
+    }
 
     String currency() {
         return currency;
@@ -25,6 +27,10 @@ abstract class Money {
 
     public boolean equals(Object object) {
         Money money = (Money) object;
-        return this.amount == money.amount && this.getClass().equals(money.getClass());
+        return this.amount == money.amount && this.currency().equals(money.currency());
+    }
+
+    public String toString() {
+        return amount + " " + currency;
     }
 }
